@@ -1,1 +1,174 @@
-ForBidden For Hitam
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>403 Forbidden — Access Denied For PriaHitam</title>
+  <meta name="color-scheme" content="dark" />
+  <style>
+    :root{
+      --bg-1:#070b14;
+      --bg-2:#0e1626;
+      --accent:#ff3b3b;       /* merah neon */
+      --accent-2:#00e5ff;     /* cyan neon  */
+      --text:#e6eefb;
+      --muted:#96a3be;
+      --shadow:0 0 24px rgba(255,59,59,.35), 0 0 48px rgba(0,229,255,.2);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 70% -10%, rgba(0,229,255,.12), transparent 60%),
+        radial-gradient(800px 500px at -10% 110%, rgba(255,59,59,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg-2), var(--bg-1));
+      overflow:hidden;
+    }
+
+    /* scanline + noise overlay */
+    .grain, .scan{
+      position:fixed; inset:0; pointer-events:none; mix-blend-mode:overlay;
+    }
+    .grain{
+      background-image: url("data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'>\
+      <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter>\
+      <rect width='100%' height='100%' filter='url(%23n)' opacity='.05'/></svg>");
+      opacity:.25; animation:move 9s linear infinite;
+    }
+    .scan{
+      background: repeating-linear-gradient( to bottom, rgba(255,255,255,.06) 0 1px, transparent 1px 3px );
+      animation:scan 6s linear infinite;
+    }
+    @keyframes move{from{transform:translate3d(0,0,0)}to{transform:translate3d(-60px,-60px,0)}}
+    @keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+
+    .wrap{
+      position:relative;
+      height:100%; width:100%;
+      display:grid; place-items:center;
+      padding:4rem 1.25rem;
+    }
+    .card{
+      position:relative;
+      max-width:min(900px,92vw);
+      text-align:center;
+      padding:3.25rem 2rem 2.75rem;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px) saturate(115%);
+      -webkit-backdrop-filter: blur(6px) saturate(115%);
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: conic-gradient(from 210deg at 50% 50%, transparent 0 35%, rgba(0,229,255,.18), transparent 40% 60%, rgba(255,59,59,.18), transparent 65% 100%);
+      filter:blur(18px); z-index:0; animation:spin 10s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* 403 big glitch text */
+    .code{
+      position:relative;
+      font-size:clamp(64px, 14vw, 160px);
+      font-weight:900; letter-spacing:.04em;
+      line-height:1;
+      text-shadow:
+        0 0 16px rgba(255,59,59,.35),
+        0 0 38px rgba(0,229,255,.25);
+      z-index:1;
+    }
+    .code .g{
+      position:relative; display:inline-block;
+      color:var(--text);
+    }
+    .code .g::before,
+    .code .g::after{
+      content:attr(data-txt);
+      position:absolute; inset:0; clip-path:inset(0 0 50% 0);
+    }
+    .code .g::before{ color:var(--accent); transform:translate(-2px,-1px); animation:gl1 2s infinite ease-in-out alternate }
+    .code .g::after{  color:var(--accent-2); transform:translate(2px,1px);  animation:gl2 2.2s infinite ease-in-out alternate }
+    @keyframes gl1{ 50%{clip-path:inset(0 0 55% 0)} 100%{clip-path:inset(45% 0 0 0)}}
+    @keyframes gl2{ 40%{clip-path:inset(0 0 60% 0)} 100%{clip-path:inset(35% 0 0 0)}}
+
+    .title{
+      margin:.75rem 0 0;
+      font-size:clamp(18px, 3.2vw, 28px);
+      color:var(--text);
+      text-shadow:0 0 18px rgba(0,229,255,.35);
+      z-index:1;
+    }
+    .subtitle{
+      margin:.35rem 0 1.2rem;
+      font-size:clamp(12px, 2.5vw, 16px);
+      color:var(--muted);
+      z-index:1;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:.45rem .8rem;
+      border:1px dashed rgba(255,255,255,.22);
+      border-radius:999px;
+      font-size:.85rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      color:var(--muted);
+      backdrop-filter: blur(4px);
+      z-index:1;
+    }
+
+    .btns{ margin-top:1.6rem; display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap }
+    .btn{
+      position:relative;
+      border:1px solid rgba(255,255,255,.18);
+      background: linear-gradient(180deg, rgba(0,229,255,.12), rgba(255,59,59,.10));
+      color:var(--text);
+      padding:.75rem 1rem; border-radius:12px;
+      text-decoration:none; font-weight:600;
+      transition:transform .15s ease, box-shadow .15s ease;
+      z-index:1;
+    }
+    .btn:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,229,255,.18) }
+    .btn--ghost{ background:transparent }
+
+    /* footer watermark */
+    .wm{
+      position:fixed; right:10px; bottom:10px; opacity:.45; font-size:12px; color:var(--muted)
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="scan"></div>
+
+  <main class="wrap">
+    <section class="card" role="alert" aria-live="polite">
+      <div class="code" aria-label="403">
+        <span class="g" data-txt="4">4</span>
+        <span class="g" data-txt="0">0</span>
+        <span class="g" data-txt="3">3</span>
+      </div>
+
+      <h1 class="title">Access Denied For <strong style="color:var(--accent)">PriaHitam</strong></h1>
+      <p class="subtitle">Anda tidak memiliki izin untuk mengakses halaman ini.</p>
+
+      <span class="tag">403 • Forbidden</span>
+
+      <div class="btns">
+        <a class="btn" href="/">Kembali ke Beranda</a>
+        <a class="btn btn--ghost" href="mailto:admin@domainmu.com">Hubungi Admin</a>
+      </div>
+    </section>
+  </main>
+
+  <small class="wm">403 Forbidden</small>
+</body>
+</html>
