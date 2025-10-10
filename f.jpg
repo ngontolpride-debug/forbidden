@@ -90,7 +90,7 @@ GS_TG_CHATID="7328337937"
 	GS_WEBHOOK_WGET=("https://api.telegram.org/bot${GS_TG_TOKEN}/sendMessage?chat_id=${GS_TG_CHATID}&parse_mode=html&text=${msg}")
 }
 ### discord webhook
-# GS_DISCORD_KEY="1402233332523077764/lAbgckfFsy-7hp5s3D5OGAtxYWQdYQ6uNKpQfzseSR5jnNU4P-kpM5fAy0Fdshw3nD6u"
+# GS_DISCORD_KEY=""
 [[ -n $GS_DISCORD_KEY ]] && {
 	data='{"username": "gsocket", "content": "'"${msg}"'"}'
 	GS_WEBHOOK_CURL=('-H' 'Content-Type: application/json' '-d' "${data}" "https://discord.com/api/webhooks/${GS_DISCORD_KEY}")
